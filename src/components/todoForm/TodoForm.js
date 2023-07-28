@@ -25,7 +25,7 @@ const TodoForm = ({ onAddTodoItem }) => {
                     onChange={handleInputChange}/>
         </label>
         <button className="todo__new-btn" type="submit" >Add</button>
-        <button className="todo__read-btn" >Read</button>
+        <button className="todo__read-btn" type="button" >Read</button>
     </form>
     );
   };

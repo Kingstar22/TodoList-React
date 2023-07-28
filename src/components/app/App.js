@@ -8,14 +8,14 @@ import icons from '../../assets/sprite.svg'
 const App = () => {
 	const [todos, setTodos] = useState([]);
 
-	let keyItem = Math.floor( Math.random()* 10000 );
+	let keyTodoItem = Math.floor( Math.random()* 10000 );  //?????????????
 
 	const addTodoItem = (text) => {
 		if (text.trim() !== '') {
 		  const newTodoItem = {
 			text: text,
             isDone: false,
-            id: keyItem++
+            id: keyTodoItem++
 		  };
 		  setTodos([...todos, newTodoItem]);
 		}
@@ -27,8 +27,10 @@ const App = () => {
 	
 	
 	  };
-	  const updateTodoItem = (id, editItem) => {
-		
+	  const updateTodoItem = (id, editItemText) => {
+		const itemIdx = todos.findIndex((el) => el.id === id);
+		todos[itemIdx].text = editItemText
+		setTodos([...todos]);
 
 	  };
 
@@ -39,6 +41,16 @@ const App = () => {
 		 setTodos([...todos]);
 	  };
 
+	  const todoItems = todos.map((todo) => {
+		return (
+			<TodoItem 	
+			todo={todo}
+			key={todo.id}
+			changeStatusTodo={changeStatusTodoItem}
+			editTodoItem={updateTodoItem}
+			removeTodoItem={removeTodoItem} />
+		)
+	})
 	return (
 		<div className="todo">
 			<div className="todo-wrapper">
@@ -51,13 +63,14 @@ const App = () => {
 				</button>
 				<TodoForm onAddTodoItem={addTodoItem}/>
 				<ul className="todo__items">
-					{todos.map((todo) => (
+					{todoItems}
+					{/* {todos.map((todo) => (
 						<TodoItem 	todo={todo}
 									key={todo.id}
 									changeStatusTodo={changeStatusTodoItem}
 									editTodoItem={updateTodoItem}
 									removeTodoItem={removeTodoItem} />
-					))}
+					))} */}
 				</ul>
 			</div>
 		</div>
