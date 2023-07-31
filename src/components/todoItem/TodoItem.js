@@ -1,16 +1,15 @@
 import React, {useState} from 'react';
 import './TodoItem.css';
 import icons from '../../assets/sprite.svg'
-const TodoItem = ({ todo, changeStatusTodo, editTodoItem, removeTodoItem  }) => {
+const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => {
 
     const [editStateItem, setEditStateItem] = useState(false);
-   
 
     const changeStateItem =() => {
         setEditStateItem(!editStateItem)
     
     }
-    const TodoItem =() => {
+    const ShowTodoItem =() => {
         return (
             <div className="todo__item " >
                 <label className="todo__item-label">
@@ -36,7 +35,7 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, removeTodoItem  }) => 
                     <button
                         type="button"
                         className="todo__item-btn"
-                        onClick={() => removeTodoItem(todo.id) }>
+                        onClick={() => deleteTodoItem(todo.id) }>
                         <svg className="todo__icon">
                             <use className="todo__icon-del" xlinkHref={`${icons}#trash`}></use>
                         </svg>
@@ -46,7 +45,7 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, removeTodoItem  }) => 
         )
     }
 
-    const UpdateTodoItem =() => {
+    const ShowUpdateTodoItem =() => {
    
         const [editItemText, setEditItemText] = useState(`${todo.text}`)
         const handleInputChange = (e) => {
@@ -62,45 +61,45 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, removeTodoItem  }) => 
         };
 
 		return (
-            <form   className="todo__item"
-                    onSubmit={handleFormSubmit}>
-                <label className="todo__item-label">
-                    <input
-                        
-                        type="text"
-                        className="todo__item-input"
-                        value={editItemText} 
-                        onChange={handleInputChange}
-                    />
-                </label>
-                <div>
-                    <button
-                        type="submit"
-                        // disabled={!text}
-                        className="todo__item-btn">
-                        <svg className="todo__icon">
-                            <use className="todo__icon-edit" xlinkHref={`${icons}#check`}></use>
-                        </svg>
-                    </button>
-                    <button
-                        type="button"
-                        className="todo__item-btn">
-                        <svg className="todo__icon">
-                            <use className="todo__icon-del" xlinkHref={`${icons}#cancel`}></use>
-                        </svg>
-                    </button>
-                </div>
-            </form> 
+            <>
+                <form   className="todo__item"
+                        onSubmit={handleFormSubmit}>
+                    <label className="todo__item-label">
+                        <input
+                            
+                            type="text"
+                            className="todo__item-input"
+                            value={editItemText} 
+                            onChange={handleInputChange}
+                        />
+                    </label>
+                    <div>
+                        <button
+                            type="submit"
+                            // disabled={!text}
+                            className="todo__item-btn">
+                            <svg className="todo__icon">
+                                <use className="todo__icon-edit" xlinkHref={`${icons}#check`}></use>
+                            </svg>
+                        </button>
+                        <button
+                            type="button"
+                            className="todo__item-btn">
+                            <svg className="todo__icon">
+                                <use className="todo__icon-del" xlinkHref={`${icons}#cancel`}></use>
+                            </svg>
+                        </button>
+                    </div>
+                </form> 
+            </>
         )
 	}
  
     return (
-    <li className= {`color-${todo.isDone}`}>
-        {!editStateItem ? <TodoItem /> : <UpdateTodoItem  /> }
-    </li>
-        
-     
+        <li className= {`color-${todo.isDone}`}>
+            {!editStateItem ? <ShowTodoItem /> : <ShowUpdateTodoItem /> }
+        </li>
     );
-  };
+};
   
 export default TodoItem;

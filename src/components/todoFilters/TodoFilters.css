@@ -1,0 +1,17 @@
+.filter__btn {
+    font-size: 25px;
+    padding: 5px;
+    border-radius: 8px;
+    color: #FFF;
+    background: #FECB3E;
+    flex: 1;
+    margin-left: 15px;
+    border: 2px solid  #FECB3E;
+    cursor: pointer;
+  }
+
+.btn-active {
+  background: #fcfcfc;
+  border: 2px solid  #FECB3E;
+  color: #373737;
+}

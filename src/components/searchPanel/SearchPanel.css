@@ -1,0 +1,9 @@
+.search__panel-input {
+    padding: 5px;
+    border-radius: 8px;
+    border: 2px solid  #FECB3E;
+    font-size: 25px;
+    outline: none;
+    cursor: pointer;
+    width: 35%;
+}
