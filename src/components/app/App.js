@@ -4,9 +4,15 @@ import './App.css';
 import TodoItem from '../todoItem/TodoItem';
 import TodoForm from '../todoForm/TodoForm';
 import SearchPanel from '../searchPanel/SearchPanel';
-import {getTodoList} from '../service/service';
+import { getStorageTodoList, 
+		 addStorageTodoItem, 
+		 updateStorageTodoItem, 
+		 changeStorageTodoItemStatus,
+		 deleteStorageTodoItem
+		} from '../service/service';
 import icons from '../../assets/sprite.svg'
 import TodoFilters from '../todoFilters/TodoFilters';
+
 const App = () => {
 	const [todos, setTodos] = useState([]);
 	const [term, setTerm] = useState('');
@@ -15,6 +21,15 @@ const App = () => {
 
 	let keyTodoItem = Math.floor( Math.random()* 10000 );  //?????????????
 
+	const onReadTodoList = () => {
+		setTodos(getStorageTodoList())
+	
+	}
+
+	const onCloseTodoList = () => {
+		setTodos([])
+	}
+
 	const addTodoItem = (text) => {
 		if (text.trim() !== '') {
 		const newTodoItem = {
@@ -22,29 +37,27 @@ const App = () => {
 			isDone: false,
 			id: keyTodoItem++
 		};
-		getTodoList(newTodoItem);
-		setTodos([...todos, newTodoItem]);
+		addStorageTodoItem(newTodoItem);
+		setTodos(getStorageTodoList());
 		}
 	};
 	const changeStatusTodoItem = (id) => {
-		const itemIdx = todos.findIndex((el) => el.id === id);
-		todos[itemIdx].isDone = !todos[itemIdx].isDone;
-		setTodos([...todos]);
+		changeStorageTodoItemStatus(id);
+		setTodos(getStorageTodoList());
+
 	
 	
 	};
 	const updateTodoItem = (id, editItemText) => {
-		const itemIdx = todos.findIndex((el) => el.id === id);
-		todos[itemIdx].text = editItemText
-		setTodos([...todos]);
+		updateStorageTodoItem(id, editItemText);
+		setTodos(getStorageTodoList());
 
 	};
 
 
 	const deleteTodoItem = (id) => {
-		const itemIdx = todos.findIndex((el) => el.id === id);
-		todos.splice(itemIdx, 1);
-		setTodos([...todos]);
+		deleteStorageTodoItem(id);
+		setTodos(getStorageTodoList());
 	};
 
 	useEffect(() => {
@@ -86,12 +99,16 @@ const App = () => {
 					<main className='todo-menu'>
 						<button
 								type="button"
-								className="todo__btn">
+								className="todo__btn"
+								onClick={onCloseTodoList}
+								>
 								<svg className="todo__icon">
 									<use className="todo__icon-del" xlinkHref={`${icons}#cancel`}></use>
 								</svg>
 						</button>
-						<TodoForm onAddTodoItem={addTodoItem}/>
+						<TodoForm onAddTodoItem={addTodoItem}
+								  onReadTodoList ={onReadTodoList}
+						/>
 						<ul className="todo__items">
 							{todoItems}
 							{/* {todos.map((todo) => (
