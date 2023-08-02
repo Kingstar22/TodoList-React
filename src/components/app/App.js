@@ -18,16 +18,17 @@ const App = () => {
 	const [term, setTerm] = useState('');
 	const [filter, setFilter] = useState('all');
 	const [changedTodos, setСhangedTodos] = useState([]);
-
+	const [readTodo, setReadTodo] = useState(false);
 	let keyTodoItem = Math.floor( Math.random()* 10000 );  //?????????????
 
 	const onReadTodoList = () => {
 		setTodos(getStorageTodoList())
-	
+		setReadTodo(true)
 	}
 
 	const onCloseTodoList = () => {
 		setTodos([])
+		setReadTodo(false)
 	}
 
 	const addTodoItem = (text) => {
@@ -38,7 +39,10 @@ const App = () => {
 			id: keyTodoItem++
 		};
 		addStorageTodoItem(newTodoItem);
-		setTodos(getStorageTodoList());
+		if(readTodo) {
+			setTodos(getStorageTodoList());
+		}
+		
 		}
 	};
 	const changeStatusTodoItem = (id) => {
@@ -64,6 +68,7 @@ const App = () => {
 		if (term.length === 0 && filter === 'all') {
 			return setСhangedTodos(todos);
 		}
+		
 		const searched = todos.filter(todo => {
 			return todo.text.toLowerCase().indexOf(term.toLowerCase()) > -1
 		})
@@ -77,7 +82,7 @@ const App = () => {
 			default:
 				return setСhangedTodos(searched);
 		}
-
+	
 	}, [todos, term, filter]);
 
 	
