@@ -10,6 +10,8 @@
 }
 
 .todo__item-label {
+  display: flex;
+  align-items: center;
   padding-left: 10px;
   cursor: pointer;
   font-size: 25px;
@@ -27,7 +29,6 @@
   opacity: .3;
 }
 
-
 .todo__item-input {
   padding: 5px;
   border-radius: 8px;
@@ -38,13 +39,20 @@
   cursor: pointer;
 }
 
+.todo__item-text {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 5px;
+  padding-bottom: 10px;
+}
+
 .todo__item-btn {
   width: 40px;
   height: 40px;
   border: 0;
-  border-radius: 8px;
   cursor: pointer;
   padding: 5px;
+  margin-left: 5px;
   background: transparent;
 }
 
@@ -65,10 +73,13 @@
   opacity: .3;
 }
 
-@media (max-width: 768px) {
-
+@media (max-width: 576px) {
   .todo__item {
-    height: 50px;
+    height: 48px;
+}
+
+  .todo__item-label {
+    font-size: 20px;
   }
 
   .todo__item-input {
@@ -79,6 +90,7 @@
 @media (max-width: 425px) {
 
   .todo__item-label {
+    display: flex;
     font-size: 16px;
   }
 
@@ -86,7 +98,17 @@
     height: 40px;
   }
 
+  .todo__item-btn {
+    width: 30px;
+    height: 30px;
+    margin-left: 0;
+}
   .todo__item-input {
     font-size: 14px;
   }
+
+  .todo__item-checkbox {
+    height: 18px;
+    width: 20px;
+}
 }

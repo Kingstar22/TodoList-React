@@ -1,15 +1,15 @@
 .todo__new {
     display: flex;
-    width: 60%;
     justify-content: center;
-    padding: 10px;
+    padding: 15px;
     align-items: flex-end;
+    width: 100%;
   }
   
   .todo__new-label {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 74%;
     font-size: 25px;
     font-weight: 700;
   }
@@ -31,36 +31,42 @@
     border-radius: 8px;
     color: #FFF;
     background: #FECB3E;
-    flex: 1;
     margin-left: 15px;
+    max-width: 81px;
     border: 2px solid  #FECB3E;
     cursor: pointer;
   }
   
+  @media (max-width: 576px) {
 
-  
-  @media (max-width: 768px) {
-  
-    .todo__new {
-      width: 100%;
+    .todo__new-input { 
+      font-size: 18px;
     }
-  
-    .todo__new-label {
-      width: 60%;
+    .todo__new-btn, .todo__read-btn {
+        font-size: 18px;
+        margin-left: 10px;
     }
+    
+    
   }
+
+
   @media (max-width: 425px) {
+
+    .todo__new {
+      padding: 15px 10px;
+    }
 
     .todo__new-label {
         font-size: 16px;
-      }
+    }
   
     .todo__new-input {
-      font-size: 16px;
+      font-size: 14px;
     }
   
     .todo__new-btn, .todo__read-btn {
-      margin-left: 7px;
-      font-size: 16px;
+      margin-left: 5px;
+      font-size: 14px;
     }
   }

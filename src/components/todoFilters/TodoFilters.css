@@ -4,14 +4,31 @@
     border-radius: 8px;
     color: #FFF;
     background: #FECB3E;
-    flex: 1;
     margin-left: 15px;
     border: 2px solid  #FECB3E;
     cursor: pointer;
+    max-width: 81px;
   }
 
 .btn-active {
   background: #fcfcfc;
   border: 2px solid  #FECB3E;
   color: #373737;
+}
+
+
+@media (max-width: 576px) {
+
+  .filter__btn {
+    font-size: 18px;
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+
+  .filter__btn {
+    font-size: 14px;
+    margin-left: 5px;
+  }
 }

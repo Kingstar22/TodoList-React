@@ -22,9 +22,9 @@ const TodoFilters = ({filter, onFilterSelect}) => {
     })
 
     return (
-        <div className="filters__btn">
+        <>
             {btns}
-        </div>
+        </>
     )
 	
 }

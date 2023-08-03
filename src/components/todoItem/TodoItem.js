@@ -19,8 +19,18 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => 
                         onChange={() => changeStatusTodo(todo.id) }
                         className="todo__item-checkbox "
                     />
-                    {todo.isDone ? <del><span>{todo.text}</span></del>: <span>{todo.text}</span>}
-            
+                    {todo.isDone ? <div className='todo__item-text'>
+                                        <del>
+                                            <span >{todo.text}</span>
+                                        </del>
+                                    </div> 
+                                 : 
+                                    <div className='todo__item-text'>
+                                        <span>{todo.text}</span> 
+                                    </div>
+                    }
+                                   
+                                   
                 </label>
                 <div>
                     <button

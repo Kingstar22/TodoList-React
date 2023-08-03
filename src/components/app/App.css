@@ -1,5 +1,5 @@
 .todo {
-  max-width: 1220px;
+  max-width: 800px;
   margin: 50px auto;
   padding: 0 30px;
 }
@@ -35,18 +35,11 @@
   background: transparent;
 }
 
-.todo__icon {
-  width: 100%;
-  height: 100%;
-}
 
-.todo__icon-del {
-  fill: #E55;
-}
 
 
 .todo__items {
-  width: 59%;
+  width: 90%;
   overflow-y: auto;
   padding: 0 15px 5px 5px;
   margin-top: 10px;
@@ -54,40 +47,37 @@
 }
 
 
-.search__panel {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  padding: 25px;
+.todo-footer {
+  padding: 15px;
   box-shadow: 0 4px 96px rgba(0,0,0, .2);
   border-radius: 0 0 30px 30px;
   color: #fff;
 }
 
-@media (max-width: 768px) {
-
-  .todo__new, .todo__items {
-    width: 100%;
-  }
-
-  .todo__new-label {
-    width: 60%;
-  }
+.search__panel {
+  display: flex;
+  justify-content: center;
 }
+
+@media (max-width: 576px) {
+
+}
+
+
 
 @media (max-width: 425px) {
 
   .todo {
-    padding: 15px;
+    padding: 0 15px;
   }
 
-  .todo__new-input {
-    font-size: 16px;
+  .todo__btn {
+    width: 20px;
+    height: 20px;
+  }
+  .todo-footer {
+    padding: 10px;
+   
   }
 
-  .todo__new-btn, .todo__read-btn {
-    margin-left: 7px;
-    font-size: 16px;
-  }
 }

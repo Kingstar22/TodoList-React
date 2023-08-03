@@ -12,6 +12,7 @@ import { getStorageTodoList,
 		} from '../service/service';
 import icons from '../../assets/sprite.svg'
 import TodoFilters from '../todoFilters/TodoFilters';
+import FloatingAlert from '../floatingAlert/FloatingAlert';
 
 const App = () => {
 	const [todos, setTodos] = useState([]);
@@ -100,6 +101,7 @@ const App = () => {
 	return (
 		<>
 			<div className="todo">
+			{/* {readTodo ? <FloatingAlert/> : null } */}
 				<div className="todo-wrapper">
 					<main className='todo-menu'>
 						<button
