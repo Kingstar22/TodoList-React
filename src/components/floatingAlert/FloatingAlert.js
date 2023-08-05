@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './FloatingAlert.css';
-const FloatingAlert = ({readTodo}) => { 
+const FloatingAlert = ({ showAlert}) => { 
 
   const [isAlertOpen, setIsAlertOpen] = useState(false);
   const [isAlertOpenProgress, setIsAlertOpenProgress] = useState(false);
@@ -23,10 +23,10 @@ const FloatingAlert = ({readTodo}) => {
   };
 
   useEffect(() => {
-    if (readTodo) {
+    if (showAlert) {
       showNotification();
     }
-  }, [showNotification, readTodo]);
+  }, [showNotification, showAlert]);
    
     return (
         <>

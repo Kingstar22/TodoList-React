@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './TodoForm.css';
-const TodoForm = ({ onAddTodoItem, onReadTodoList }) => { 
+const TodoForm = ({ onAddTodoItem, onReadTodoList,onShowAlert }) => { 
 
     const [newItem, setNewItem] = useState('');
     
@@ -11,6 +11,7 @@ const TodoForm = ({ onAddTodoItem, onReadTodoList }) => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         onAddTodoItem(newItem);
+        onShowAlert()
         setNewItem('');
     };
   
@@ -25,7 +26,7 @@ const TodoForm = ({ onAddTodoItem, onReadTodoList }) => {
                     value={newItem} 
                     onChange={handleInputChange}/>
         </label>
-        <button className="todo__new-btn" type="submit" >Add</button>
+        <button className="todo__new-btn" type="submit">Add</button>
         <button  className="todo__read-btn"
                  type="button" 
                  onClick={onReadTodoList} 

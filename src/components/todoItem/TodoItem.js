@@ -43,8 +43,7 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => 
                     <button
                         type="button"
                         className="todo__item-btn"
-                        onClick={() => deleteTodoItem(todo.id) }
-                        disabled={todo.isDone}>
+                        onClick={() => deleteTodoItem(todo.id) }>
                         <svg className="todo__icon">
                             <use className="todo__icon-del" xlinkHref={`${icons}#trash`}></use>
                         </svg>

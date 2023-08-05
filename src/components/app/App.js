@@ -20,8 +20,15 @@ const App = () => {
 	const [filter, setFilter] = useState('all');
 	const [changedTodos, setСhangedTodos] = useState([]);
 	const [readTodo, setReadTodo] = useState(false);
+	const [showAlert, setShowAlert] = useState(false);
 	let keyTodoItem = Math.floor( Math.random()* 10000 );  //?????????????
 
+	
+	const onShowAlert = () => {
+		
+		setShowAlert(true)
+
+	}
 	const onReadTodoList = () => {
 		setTodos(getStorageTodoList())
 		setReadTodo(true)
@@ -99,7 +106,7 @@ const App = () => {
 	return (
 		<>
 			<main className="todo">
-			 {readTodo ? <FloatingAlert readTodo={readTodo} /> : null }
+			 {showAlert ? <FloatingAlert  showAlert={showAlert} /> : null }
 				<div className="todo-wrapper">
 					<section className='todo-menu'>
 						<button
@@ -112,6 +119,7 @@ const App = () => {
 								</svg>
 						</button>
 						<TodoForm onAddTodoItem={addTodoItem}
+								  onShowAlert ={onShowAlert}
 								  onReadTodoList ={onReadTodoList}
 								
 						/>
