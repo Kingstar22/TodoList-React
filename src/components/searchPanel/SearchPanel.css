@@ -9,14 +9,14 @@
 }
 
 @media (max-width: 576px) {
-
     .search__panel-input {
       font-size: 18px;
       width: 60%;
     }
   }
-  @media (max-width: 425px) {
-    .search__panel-input {
-      font-size: 14px;
-    }
+
+@media (max-width: 425px) {
+  .search__panel-input {
+    font-size: 14px;
   }
+}

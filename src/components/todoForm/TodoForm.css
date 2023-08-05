@@ -38,7 +38,6 @@
   }
   
   @media (max-width: 576px) {
-
     .todo__new-input { 
       font-size: 18px;
     }
@@ -46,10 +45,7 @@
         font-size: 18px;
         margin-left: 10px;
     }
-    
-    
   }
-
 
   @media (max-width: 425px) {
 

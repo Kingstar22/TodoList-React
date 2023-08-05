@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './TodoItem.css';
 import icons from '../../assets/sprite.svg'
 const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => {
-
     const [editStateItem, setEditStateItem] = useState(false);
 
     const changeStateItem =() => {
@@ -28,15 +27,14 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => 
                                     <div className='todo__item-text'>
                                         <span>{todo.text}</span> 
                                     </div>
-                    }
-                                   
-                                   
+                    }            
                 </label>
                 <div>
                     <button
                         type="button"
                         className="todo__item-btn"
                         onClick={changeStateItem}
+                        disabled={todo.isDone}
                         >
                         <svg className="todo__icon">
                             <use className="todo__icon-edit" xlinkHref={`${icons}#pencil`}></use>
@@ -45,7 +43,8 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => 
                     <button
                         type="button"
                         className="todo__item-btn"
-                        onClick={() => deleteTodoItem(todo.id) }>
+                        onClick={() => deleteTodoItem(todo.id) }
+                        disabled={todo.isDone}>
                         <svg className="todo__icon">
                             <use className="todo__icon-del" xlinkHref={`${icons}#trash`}></use>
                         </svg>
@@ -69,6 +68,9 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => 
             setEditItemText('');
             setEditStateItem(!editStateItem)
         };
+        const cancelEditItem = () => {
+            setEditStateItem(!editStateItem)
+        }
 
 		return (
             <>
@@ -86,7 +88,6 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => 
                     <div>
                         <button
                             type="submit"
-                            // disabled={!text}
                             className="todo__item-btn">
                             <svg className="todo__icon">
                                 <use className="todo__icon-edit" xlinkHref={`${icons}#check`}></use>
@@ -94,6 +95,7 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => 
                         </button>
                         <button
                             type="button"
+                            onClick={cancelEditItem}
                             className="todo__item-btn">
                             <svg className="todo__icon">
                                 <use className="todo__icon-del" xlinkHref={`${icons}#cancel`}></use>
@@ -105,9 +107,10 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => 
         )
 	}
  
+    //компоненти створені в компоненті, чи краще використати функції {!editStateItem ? {ShowTodoItem} : {ShowUpdateTodoItem} } 
     return (
         <li className= {`color-${todo.isDone}`}>
-            {!editStateItem ? <ShowTodoItem /> : <ShowUpdateTodoItem /> }
+            {!editStateItem ? <ShowTodoItem /> : <ShowUpdateTodoItem /> } 
         </li>
     );
 };

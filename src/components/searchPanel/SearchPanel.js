@@ -6,11 +6,11 @@ const SearchPanel = ({ term, onSearchChange }) => {
       };
     return (
       <>
-            <input  type="text"
-				value={term}
-				onChange={handleSearchChange}
-				className="search__panel-input"
-				placeholder="find a task"/>
+        <input  type="text"
+                value={term}
+                onChange={handleSearchChange}
+                className="search__panel-input"
+                placeholder="find a task"/>
       </>
     )
 }

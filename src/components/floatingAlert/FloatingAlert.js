@@ -1,36 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './FloatingAlert.css';
-const FloatingAlert = () => {
-  let  isAlertOpen  = false;
-  let isAlertOpenProgress  = false;
-  let error  = false;
-  let massage = 'Показники надіслані!';
+const FloatingAlert = ({readTodo}) => { 
 
-    const  showNotification = () => {
-        isAlertOpen = !isAlertOpen;
-       isAlertOpenProgress = !isAlertOpenProgress;
-       autoClose();
-    }
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const [isAlertOpenProgress, setIsAlertOpenProgress] = useState(false);
+  const [error, setError] = useState(false);
+  const [message, setMessage] = useState('added item!');
 
-    const autoClose = () => {
-        setTimeout(() => {
-            isAlertOpen = !isAlertOpen;
-        },2500);
-        setTimeout(() => {
-           isAlertOpenProgress = !isAlertOpenProgress;
-        },2800)
+  const showNotification = useCallback(() => {
+    setIsAlertOpen(true);
+    setIsAlertOpenProgress(true);
+    autoClose();
+  }, []);
+
+  const autoClose = () => {
+    setTimeout(() => {
+      setIsAlertOpen(false);
+    }, 2500);
+    setTimeout(() => {
+      setIsAlertOpenProgress(false);
+    }, 2800);
+  };
+
+  useEffect(() => {
+    if (readTodo) {
+      showNotification();
     }
+  }, [showNotification, readTodo]);
+   
     return (
         <>
-            <div class="floating-alert"
-                onClick={showNotification}>
-                <div class="floating-alert__content">
-                    <span class="floating-alert__content-text">{massage}</span>
+            <div className={`floating-alert 
+                            ${error ? {'border-left': '6px solid #d50d0d'} : {'border-left': '6px solid #0dd51f'}} 
+                            ${isAlertOpen ? 'active' : null}`
+                            }
+                >
+                <div className="floating-alert__content">
+                    <span className="floating-alert__content-text">{message}</span>
                 </div>
-                <div class="floating-alert__progress">
+                <div className={`floating-alert__progress ${error ? (isAlertOpenProgress ? 'active active-error' : null) : (isAlertOpenProgress ? 'active' : null)}`}>
                 </div>
             </div>
-
         </>
     );
    

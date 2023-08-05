@@ -34,25 +34,23 @@ const App = () => {
 
 	const addTodoItem = (text) => {
 		if (text.trim() !== '') {
-		const newTodoItem = {
-			text: text,
-			isDone: false,
-			id: keyTodoItem++
-		};
-		addStorageTodoItem(newTodoItem);
-		if(readTodo) {
-			setTodos(getStorageTodoList());
-		}
-		
+			const newTodoItem = {
+				text: text,
+				isDone: false,
+				id: keyTodoItem++
+			};
+			addStorageTodoItem(newTodoItem);
+			if(readTodo) {
+				setTodos(getStorageTodoList());
+			}
 		}
 	};
 	const changeStatusTodoItem = (id) => {
 		changeStorageTodoItemStatus(id);
 		setTodos(getStorageTodoList());
-
-	
 	
 	};
+
 	const updateTodoItem = (id, editItemText) => {
 		updateStorageTodoItem(id, editItemText);
 		setTodos(getStorageTodoList());
@@ -100,10 +98,10 @@ const App = () => {
 	})
 	return (
 		<>
-			<div className="todo">
-			{/* {readTodo ? <FloatingAlert/> : null } */}
+			<main className="todo">
+			 {readTodo ? <FloatingAlert readTodo={readTodo} /> : null }
 				<div className="todo-wrapper">
-					<main className='todo-menu'>
+					<section className='todo-menu'>
 						<button
 								type="button"
 								className="todo__btn"
@@ -115,6 +113,7 @@ const App = () => {
 						</button>
 						<TodoForm onAddTodoItem={addTodoItem}
 								  onReadTodoList ={onReadTodoList}
+								
 						/>
 						<ul className="todo__items">
 							{todoItems}
@@ -126,15 +125,15 @@ const App = () => {
 											removeTodoItem={removeTodoItem} />
 							))} */}
 						</ul>
-					</main>
+					</section>
 					<footer className='todo-footer'>
-						<div className="search__panel">
+						<section className="search__panel">
 							<SearchPanel term={term} onSearchChange={setTerm}/>
 							<TodoFilters filter={filter} onFilterSelect={setFilter}/>
-						</div>
+						</section>
 					</footer>
 				</div>
-			</div>
+			</main>
 		</>
 	);
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './TodoForm.css';
-const TodoForm = ({ onAddTodoItem, onReadTodoList }) => {
+const TodoForm = ({ onAddTodoItem, onReadTodoList }) => { 
 
     const [newItem, setNewItem] = useState('');
     
@@ -13,6 +13,7 @@ const TodoForm = ({ onAddTodoItem, onReadTodoList }) => {
         onAddTodoItem(newItem);
         setNewItem('');
     };
+  
 
     return (
     <form   className="todo__new"
@@ -27,7 +28,7 @@ const TodoForm = ({ onAddTodoItem, onReadTodoList }) => {
         <button className="todo__new-btn" type="submit" >Add</button>
         <button  className="todo__read-btn"
                  type="button" 
-                 onClick={onReadTodoList}
+                 onClick={onReadTodoList} 
                  >Read</button>
     </form>
     );

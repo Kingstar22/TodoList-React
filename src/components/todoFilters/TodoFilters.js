@@ -1,4 +1,4 @@
-import './TodoFilters.css';
+import './TodoFilters.css'; 
 const TodoFilters = ({filter, onFilterSelect}) => {
 
 	const btnsData = [
