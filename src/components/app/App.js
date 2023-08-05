@@ -25,7 +25,6 @@ const App = () => {
 
 	
 	const onShowAlert = () => {
-		
 		setShowAlert(true)
 
 	}
