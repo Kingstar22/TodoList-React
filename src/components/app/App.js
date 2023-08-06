@@ -23,11 +23,12 @@ const App = () => {
 	const [showAlert, setShowAlert] = useState(false);
 	let keyTodoItem = Math.floor( Math.random()* 10000 );  //?????????????
 
-	
 	const onShowAlert = () => {
-		setShowAlert(true)
-
+		if(!readTodo) {
+			setShowAlert(true)
+		}
 	}
+
 	const onReadTodoList = () => {
 		setTodos(getStorageTodoList())
 		setReadTodo(true)
@@ -35,7 +36,7 @@ const App = () => {
 
 	const onCloseTodoList = () => {
 		setTodos([])
-		setReadTodo(false)
+		setReadTodo(false)	
 	}
 
 	const addTodoItem = (text) => {
@@ -54,13 +55,11 @@ const App = () => {
 	const changeStatusTodoItem = (id) => {
 		changeStorageTodoItemStatus(id);
 		setTodos(getStorageTodoList());
-	
 	};
 
 	const updateTodoItem = (id, editItemText) => {
 		updateStorageTodoItem(id, editItemText);
 		setTodos(getStorageTodoList());
-
 	};
 
 
@@ -73,7 +72,6 @@ const App = () => {
 		if (term.length === 0 && filter === 'all') {
 			return setСhangedTodos(todos);
 		}
-		
 		const searched = todos.filter(todo => {
 			return todo.text.toLowerCase().indexOf(term.toLowerCase()) > -1
 		})
@@ -87,11 +85,8 @@ const App = () => {
 			default:
 				return setСhangedTodos(searched);
 		}
-	
 	}, [todos, term, filter]);
 
-	
-	  
 	const todoItems = changedTodos.map((todo) => {
 		return (
 			<TodoItem 	
@@ -105,23 +100,20 @@ const App = () => {
 	return (
 		<>
 			<main className="todo">
-			 {showAlert ? <FloatingAlert  showAlert={showAlert} /> : null }
+			<FloatingAlert  showAlert={showAlert} setShowAlert={setShowAlert}/>
 				<div className="todo-wrapper">
 					<section className='todo-menu'>
 						<button
-								type="button"
-								className="todo__btn"
-								onClick={onCloseTodoList}
-								>
-								<svg className="todo__icon">
-									<use className="todo__icon-del" xlinkHref={`${icons}#cancel`}></use>
-								</svg>
+							type="button"
+							className="todo__btn"
+							onClick={onCloseTodoList}>
+							<svg className="todo__icon">
+								<use className="todo__icon-del" xlinkHref={`${icons}#cancel`}></use>
+							</svg>
 						</button>
 						<TodoForm onAddTodoItem={addTodoItem}
 								  onShowAlert ={onShowAlert}
-								  onReadTodoList ={onReadTodoList}
-								
-						/>
+								  onReadTodoList ={onReadTodoList}/>
 						<ul className="todo__items">
 							{todoItems}
 							{/* {todos.map((todo) => (
