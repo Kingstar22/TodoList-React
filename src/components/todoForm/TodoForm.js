@@ -30,7 +30,7 @@ const TodoForm = ({ onAddTodoItem, onReadTodoList,onShowAlert }) => {
         <button  className="todo__read-btn"
                  type="button" 
                  onClick={onReadTodoList} 
-                 >Read</button>
+                 >Open</button>
     </form>
     );
   };

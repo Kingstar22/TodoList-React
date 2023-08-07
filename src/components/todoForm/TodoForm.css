@@ -58,11 +58,11 @@
     }
   
     .todo__new-input {
-      font-size: 14px;
+      font-size: 16px;
     }
   
     .todo__new-btn, .todo__read-btn {
       margin-left: 5px;
-      font-size: 14px;
+      font-size: 16px;
     }
   }

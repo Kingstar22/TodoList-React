@@ -15,57 +15,8 @@
   height: 600px;
 }
 
-.todo-menu {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-}
-
-.todo__btn {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  width: 26px;
-  height: 26px;
-  border: 0;
-  border-radius: 8px;
-  cursor: pointer;
-  background: transparent;
-}
-
-.todo__items {
-  width: 90%;
-  overflow-y: auto;
-  padding: 0 15px 5px 5px;
-  margin-top: 10px;
-}
-
-.todo-footer {
-  padding: 15px;
-  box-shadow: 0 4px 96px rgba(0,0,0, .2);
-  border-radius: 0 0 30px 30px;
-  color: #fff;
-}
-
-.search__panel {
-  display: flex;
-  justify-content: center;
-}
-
 @media (max-width: 425px) {
   .todo {
     padding: 0 15px;
   }
-
-  .todo__btn {
-    width: 20px;
-    height: 20px;
-  }
-
-  .todo-footer {
-    padding: 10px;
-  }
-
 }

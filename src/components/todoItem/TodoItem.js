@@ -1,13 +1,35 @@
 import React, {useState} from 'react';
 import './TodoItem.css';
 import icons from '../../assets/sprite.svg'
-const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => {
+import {    getStorageTodoList, 
+            updateStorageTodoItem, 
+            changeStorageTodoItemStatus,
+            deleteStorageTodoItem
+} from '../service/service';
+const TodoItem = ({ todo, setTodos, }) => {
     const [editStateItem, setEditStateItem] = useState(false);
 
     const changeStateItem =() => {
         setEditStateItem(!editStateItem)
-    
     }
+
+    const changeStatusTodoItem = (id) => {
+		changeStorageTodoItemStatus(id);
+		setTodos(getStorageTodoList());
+	};
+
+    const updateTodoItem = (id, editItemText) => {
+		updateStorageTodoItem(id, editItemText);
+		setTodos(getStorageTodoList());
+	};
+
+
+	const deleteTodoItem = (id) => {
+		deleteStorageTodoItem(id);
+		setTodos(getStorageTodoList());
+	};
+
+    
     const ShowTodoItem =() => {
         return (
             <div className="todo__item " >
@@ -15,7 +37,7 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => 
                     <input
                         type="checkbox"
                         defaultChecked={todo.isDone}
-                        onChange={() => changeStatusTodo(todo.id) }
+                        onChange={() => changeStatusTodoItem(todo.id) }
                         className="todo__item-checkbox "
                     />
                     {todo.isDone ? <div className='todo__item-text'>
@@ -63,7 +85,7 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => 
         
         const handleFormSubmit = (e) => {
             e.preventDefault();
-            editTodoItem(todo.id, editItemText);
+            updateTodoItem(todo.id, editItemText);
             setEditItemText('');
             setEditStateItem(!editStateItem)
         };
@@ -106,7 +128,6 @@ const TodoItem = ({ todo, changeStatusTodo, editTodoItem, deleteTodoItem  }) => 
         )
 	}
  
-    //компоненти створені в компоненті, чи краще використати функції {!editStateItem ? {ShowTodoItem} : {ShowUpdateTodoItem} } 
     return (
         <li className= {`color-${todo.isDone}`}>
             {!editStateItem ? <ShowTodoItem /> : <ShowUpdateTodoItem /> } 

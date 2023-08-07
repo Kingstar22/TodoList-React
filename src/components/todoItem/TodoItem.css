@@ -103,9 +103,6 @@
     height: 30px;
     margin-left: 0;
   }
-  .todo__item-input {
-    font-size: 14px;
-  }
 
   .todo__item-checkbox {
     height: 18px;

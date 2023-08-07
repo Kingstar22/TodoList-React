@@ -1,0 +1,33 @@
+.todo-menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .todo__btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 26px;
+    height: 26px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    background: transparent;
+  }
+  
+  .todo__items {
+    width: 90%;
+    overflow-y: auto;
+    padding: 0 15px 5px 5px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 425px) {
+    .todo__btn {
+      width: 20px;
+      height: 20px;
+    }
+  }
