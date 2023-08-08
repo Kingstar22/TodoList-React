@@ -1,7 +1,7 @@
 .search__panel-input {
     padding: 5px;
     border-radius: 8px;
-    border: 2px solid  #FECB3E;
+    border: 2px solid #fecb3e;
     font-size: 25px;
     outline: none;
     cursor: pointer;
@@ -10,13 +10,13 @@
 
 @media (max-width: 576px) {
     .search__panel-input {
-      font-size: 18px;
-      width: 60%;
+        font-size: 18px;
+        width: 60%;
     }
-  }
+}
 
 @media (max-width: 425px) {
-  .search__panel-input {
-    font-size: 16px;
-  }
+    .search__panel-input {
+        font-size: 16px;
+    }
 }

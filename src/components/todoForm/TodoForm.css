@@ -4,65 +4,67 @@
     padding: 15px;
     align-items: flex-end;
     width: 100%;
-  }
-  
-  .todo__new-label {
+}
+
+.todo__new-label {
     display: flex;
     flex-direction: column;
     width: 74%;
     font-size: 25px;
     font-weight: 700;
-  }
-  
-  .todo__new-input {
+}
+
+.todo__new-input {
     padding: 5px;
     border-radius: 8px;
-    border: 2px solid  #FECB3E;
+    border: 2px solid #fecb3e;
     font-size: 25px;
     margin-top: 15px;
     outline: none;
     cursor: pointer;
     width: 100%;
-  }
-  
-  .todo__new-btn, .todo__read-btn {
+}
+
+.todo__new-btn,
+.todo__read-btn {
     font-size: 25px;
     padding: 5px;
     border-radius: 8px;
-    color: #FFF;
-    background: #FECB3E;
+    color: #fff;
+    background: #fecb3e;
     margin-left: 15px;
     max-width: 81px;
-    border: 2px solid  #FECB3E;
+    border: 2px solid #fecb3e;
     cursor: pointer;
-  }
-  
-  @media (max-width: 576px) {
-    .todo__new-input { 
-      font-size: 18px;
+}
+
+@media (max-width: 576px) {
+    .todo__new-input {
+        font-size: 18px;
     }
-    .todo__new-btn, .todo__read-btn {
+    .todo__new-btn,
+    .todo__read-btn {
         font-size: 18px;
         margin-left: 10px;
     }
-  }
+}
 
-  @media (max-width: 425px) {
-
+@media (max-width: 425px) {
     .todo__new {
-      padding: 15px 10px;
+        padding: 15px 10px;
     }
 
     .todo__new-label {
         font-size: 16px;
     }
-  
+
     .todo__new-input {
-      font-size: 16px;
+        font-size: 16px;
     }
-  
-    .todo__new-btn, .todo__read-btn {
-      margin-left: 5px;
-      font-size: 16px;
+
+    .todo__new-btn,
+    .todo__read-btn {
+        margin-left: 5px;
+        font-size: 16px;
     }
-  }
+}
